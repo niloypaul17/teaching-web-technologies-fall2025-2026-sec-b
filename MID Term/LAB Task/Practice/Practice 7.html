@@ -1,0 +1,33 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  <title>Password Validation</title> 
+</head> 
+<body> 
+  <h2>Password Validation</h2> 
+  <form> 
+    <label for="password">Enter Password:</label><br /> 
+    <input type="password" id="password" name="password" autocomplete="off" /> 
+  </form> 
+ 
+  <script> 
+    const passwordInput = document.getElementById('password'); 
+ 
+    passwordInput.addEventListener('input', () => { 
+      const val = passwordInput.value; 
+ 
+      if (val.length > 0 && val.length < 8) { 
+        console.log('Password must be 8 characters long'); 
+      } 
+      if (val.length > 12) { 
+        console.log('Will you be able to remember it?'); 
+      } 
+      if (val.length > 16) { 
+        console.log('Remember long passwords are too hard to remember'); 
+      } 
+    }); 
+  </script> 
+</body> 
+</html> 

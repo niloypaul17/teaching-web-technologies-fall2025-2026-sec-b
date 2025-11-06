@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Username Uppercase Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 100px;
+        }
+        input {
+            font-size: 18px;
+            padding: 8px;
+            width: 250px;
+            text-transform: uppercase; /* ensures text looks uppercase */
+        }
+        label {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Enter Username</h2>
+
+    <form>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" placeholder="Type here...">
+    </form>
+
+    <script>
+        // Select the input field
+        const usernameInput = document.getElementById("username");
+
+        // Add event listener to detect input changes
+        usernameInput.addEventListener("input", function() {
+            // Convert the entered value to uppercase
+            this.value = this.value.toUpperCase();
+        });
+    </script>
+
+</body>
+</html>

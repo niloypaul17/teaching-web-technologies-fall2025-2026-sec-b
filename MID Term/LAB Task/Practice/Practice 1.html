@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 100px;
+        }
+        input {
+            margin: 8px;
+            padding: 8px;
+            width: 200px;
+        }
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Enter Your Name</h2>
+
+    <form onsubmit="return validateForm()">
+        <input type="text" id="firstName" placeholder="First Name"><br>
+        <input type="text" id="lastName" placeholder="Last Name"><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // Function to validate the form
+        function validateForm() {
+            const firstName = document.getElementById("firstName").value.trim();
+            const lastName = document.getElementById("lastName").value.trim();
+
+            if (firstName === "" || lastName === "") {
+                alert("Both fields must be filled out.");
+                return false; // Prevent form submission
+            }
+
+            if (firstName.length < 2 || lastName.length < 2) {
+                alert("Each field must have at least 2 characters.");
+                return false; // Prevent form submission
+            }
+
+            alert("Form submitted successfully!");
+            return true; // Allow form submission
+        }
+    </script>
+
+</body>
+</html>
