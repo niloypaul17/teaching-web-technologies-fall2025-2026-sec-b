@@ -5,12 +5,14 @@ function isLetter(ch) {
 
 function validateName() {
   let name = document.getElementById("name").value.trim();
+  let age = document.getElementById("age").value.trim();
   let msg = document.getElementById("msg");
+  let info = document.getElementById("info");
   msg.style.color = "red";
 
   // Check empty
-  if (name.length === 0) {
-    msg.innerHTML = "Error: Name cannot be empty.";
+  if (name.length === 0 || age.length === 0) {
+    msg.innerHTML = "Error: Name or age cannot be empty.";
     return false;
   }
 
@@ -45,5 +47,10 @@ function validateName() {
   // Passed all checks
   msg.style.color = "green";
   msg.innerHTML = "Success: Name is valid!";
+
+  info.innerHTML=`
+  Name: ${name}<br>
+  Age: ${age}
+  `;
   return false;
 }

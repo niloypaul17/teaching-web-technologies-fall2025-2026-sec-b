@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dynamic Form Builder</title>
+<style>
+    body { font-family: Arial; margin: 20px; }
+    table { border-collapse: collapse; }
+    td { padding: 8px; vertical-align: top; }
+    input, select { padding: 6px; width: 95%; }
+    .error { color: red; font-size: 13px; }
+    .section-title { font-weight: bold; font-size: 18px; padding: 8px 0; }
+    #infoBox { display:none; }
+    .outer-box { border:2px solid #444; padding:15px; width:650px; }
+    .field-item { border:1px solid #ccc; padding:8px; margin-bottom:5px; background:#f9f9f9; cursor:move; }
+    .field-actions { float:right; }
+    .field-actions button { margin-left:5px; }
+</style>
+</head>
+<body>
+
+<div class="outer-box">
+
+<!-- SECTION 1: ADD FIELD -->
+<table border="1" cellpadding="10" width="100%">
+    <tr><td colspan="2" class="section-title">Add Field</td></tr>
+
+    <tr>
+        <td>Field Name:</td>
+        <td><input type="text" id="fieldName"></td>
+    </tr>
+
+    <tr>
+        <td>Field Type:</td>
+        <td>
+            <select id="fieldType">
+                <option value="text">Text</option>
+                <option value="number">Number</option>
+                <option value="date">Date of Birth</option>
+                <option value="email">Email</option>
+                <option value="contact">Contact Number</option>
+                <option value="dropdown">Dropdown</option>
+                <option value="checkbox">Checkbox</option>
+                <option value="radio">Radio Button</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td>
+            <div style="height:10px;"></div>
+            <button onclick="addField()">Add Field</button>
+        </td>
+    </tr>
+</table>
+
+<br>
+
+<!-- SECTION 2: REGISTRATION FORM -->
+<table border="1" cellpadding="10" width="100%">
+    <tr><td colspan="2" class="section-title">Registration Form</td></tr>
+    <tr>
+        <td colspan="2">
+            <div id="regForm"></div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">
+            <button onclick="submitForm()">Submit</button>
+        </td>
+    </tr>
+</table>
+
+<br>
+
+<!-- SECTION 3: INFORMATION -->
+<table border="1" cellpadding="10" width="100%">
+    <tr><td class="section-title">Information</td></tr>
+    <tr><td><div id="infoBox"></div></td></tr>
+</table>
+
+</div>
+
+<script>
+let regForm = document.getElementById("regForm");
+
+function addField() {
+    let name = document.getElementById("fieldName").value.trim();
+    let type = document.getElementById("fieldType").value;
+    if(!name){ alert("Enter field name!"); return; }
+
+    let div = document.createElement("div");
+    div.className = "field-item";
+    div.draggable = true;
+
+    let innerHTML = `<label>${name}</label> <span class="field-actions">
+        <button onclick="editField(this)">Edit</button>
+        <button onclick="deleteField(this)">Delete</button>
+    </span><br>`;
+
+    if(type === "text") innerHTML += `<input type="text" data-type="text"><span class="error"></span>`;
+    else if(type === "number") innerHTML += `<input type="number" data-type="number"><span class="error"></span>`;
+    else if(type === "date") innerHTML += `<input type="date" data-type="date"><span class="error"></span>`;
+    else if(type === "email") innerHTML += `<input type="email" data-type="email"><span class="error"></span>`;
+    else if(type === "contact") innerHTML += `<input type="text" data-type="contact" placeholder="e.g. +8801XXXXXXXXX"><span class="error"></span>`;
+    else if(type === "dropdown" || type === "checkbox" || type === "radio"){
+        let options = prompt("Enter options separated by comma");
+        if(!options){ alert("Options required!"); return; }
+        let opts = options.split(",").map(o=>o.trim()).filter(o=>o);
+        if(type==="dropdown"){
+            innerHTML += `<select data-type="dropdown"><option value="">Select</option>`+
+                         opts.map(o=>`<option>${o}</option>`).join("")+
+                         `</select><span class="error"></span>`;
+        } else if(type==="checkbox"){
+            innerHTML += opts.map(o=>`<input type="checkbox" value="${o}" data-type="checkbox"> ${o} &nbsp;`).join("")+
+                         `<br><span class="error"></span>`;
+        } else if(type==="radio"){
+            innerHTML += opts.map(o=>`<input type="radio" name="${name}" value="${o}" data-type="radio"> ${o}<br>`).join("")+
+                         `<span class="error"></span>`;
+        }
+    }
+
+    div.innerHTML = innerHTML;
+    regForm.appendChild(div);
+    document.getElementById("fieldName").value = "";
+}
+
+// Edit and Delete functions
+function editField(btn){
+    let div = btn.closest(".field-item");
+    let label = div.querySelector("label").innerText;
+    let typeInput = div.querySelector("input,select");
+    let type = typeInput.dataset.type;
+
+    let newName = prompt("Edit Field Name:", label);
+    if(!newName) return;
+
+    div.querySelector("label").innerText = newName;
+
+    if(type==="dropdown" || type==="checkbox" || type==="radio"){
+        let options = prompt("Edit Options (comma separated):", Array.from(typeInput.options||[]).map(o=>o.value).filter(v=>v).join(","));
+        if(!options) return;
+        let opts = options.split(",").map(o=>o.trim()).filter(o=>o);
+        if(type==="dropdown"){
+            typeInput.innerHTML = `<option value="">Select</option>` + opts.map(o=>`<option>${o}</option>`).join("");
+        } else if(type==="checkbox" || type==="radio"){
+            let html = "";
+            if(type==="checkbox"){
+                html = opts.map(o=>`<input type="checkbox" value="${o}" data-type="checkbox"> ${o} &nbsp;`).join("");
+            } else {
+                html = opts.map(o=>`<input type="radio" name="${newName}" value="${o}" data-type="radio"> ${o}<br>`).join("");
+            }
+            typeInput.replaceWith(document.createRange().createContextualFragment(html));
+        }
+    }
+}
+
+function deleteField(btn){
+    if(confirm("Delete this field?")){
+        btn.closest(".field-item").remove();
+    }
+}
+
+// Drag & Drop reorder
+let dragged;
+regForm.addEventListener("dragstart", e=>{ dragged = e.target; });
+regForm.addEventListener("dragover", e=>{ e.preventDefault(); });
+regForm.addEventListener("drop", e=>{
+    e.preventDefault();
+    if(e.target.classList.contains("field-item")){
+        regForm.insertBefore(dragged, e.target.nextSibling);
+    }
+});
+
+// Form submission
+function submitForm(){
+    let fields = regForm.querySelectorAll(".field-item");
+    let data = {};
+    let valid = true;
+
+    fields.forEach(div=>{
+        let label = div.querySelector("label").innerText;
+        let typeInput = div.querySelector("input,select");
+        let type = typeInput.dataset.type;
+        let error = div.querySelector(".error");
+        error.innerText = "";
+
+        if(type==="checkbox"){
+            let checked = Array.from(div.querySelectorAll("input[type=checkbox]:checked")).map(c=>c.value);
+            if(checked.length===0){ error.innerText="Select at least one!"; valid=false; } 
+            else data[label]=checked.join(", ");
+        } else if(type==="radio"){
+            let selected = div.querySelector("input[type=radio]:checked");
+            if(!selected){ error.innerText="Select one option!"; valid=false; } 
+            else data[label]=selected.value;
+        } else {
+            let value = typeInput.value.trim();
+            if(!value){ error.innerText="This field is required!"; valid=false; return; }
+
+            if(type==="email"){
+                let re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if(!re.test(value)){ error.innerText="Enter valid email!"; valid=false; return; }
+            }
+            if(type==="contact"){
+                let re = /^\+?\d{10,15}$/;
+                if(!re.test(value)){ error.innerText="Enter valid contact number!"; valid=false; return; }
+            }
+            data[label] = value;
+        }
+    });
+
+    if(!valid) return;
+    showInfo(data);
+}
+
+function showInfo(data){
+    let box = document.getElementById("infoBox");
+    box.style.display="block";
+    box.innerHTML="";
+    for(let key in data){
+        box.innerHTML+=`<b>${key}</b>: ${data[key]} <br>`;
+    }
+}
+</script>
+
+</body>
+</html>
