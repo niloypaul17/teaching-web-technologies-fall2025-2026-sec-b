@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Practice 1
+        </title>
+        
+        <meta name="description" content="This is a tSEC-O 2025-26"est 1 website for Arnob MT WT >
+        <meta name="author" content="Arnob Sarker Supta">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="refresh" content="300">
+        <link rel="stylesheet" href="TASK1.css">
+    </head>
+    <style>
+        #navi ul{
+            list-style-type: none;
+            background-color: black;
+            border-radius: 10px;
+            padding: 0px;
+            overflow: hidden;
+            width: 120px;
+        }
+        #navi a{
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 0px 10px;
+            text-align: center;
+        }
+        #navi a:hover{
+            background-color: gray;
+            color: white;
+            border-radius: 10px;
+        }
+        #navi li{
+            float: left;
+        }
+        footer a{
+             text-decoration:  none;
+             color: black;
+        }
+        #B2:hover{
+            background-color: silver;
+        }
+        #HH{
+            margin: 10px;
+            size: 200px;
+        }
+    </style>
+    <body style="background-color: rgb(210, 239, 249);">
+        <header style="border: 1px solid black; border-radius: 10px; margin-bottom: 15px; padding: 10px; background-color: white; position: relative;">
+            <center>
+                <h1 id="HH">Welcome to the Registration Page</h1>
+            <br>
+            <nav id="navi">
+                <ul>
+                    <li><a href="http://127.0.0.1/WT_DEMO/Mid-Practice_Task/LASK1.html">Home</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+            </nav>
+            </center>
+            <button id="B1" style="position: absolute; top: 5px; right: 5px; border: 1px solid black; border-radius: 5px;">MODE</button>
+        </header>
+        <main>
+            <div id="MainDIV">
+                <form id="F1" style="background-color: white;" onsubmit="return reg()">
+                    <center>
+                        <h1 id="T1"><strong>REGISTRATION</strong></h1>
+                    </center>
+                    <fieldset id="FIS1" class="FF">
+                        <legend>Name Information</legend>
+                        <b>Full Name: </b><br>
+                        <input type="text" id="I1" class="AllB"><br>
+                        <b>UserName: </b><br>
+                        <input type="text" id="I2" class="AllB"><br>
+                    </fieldset>
+                    <fieldset id="FIS2" class="FF">
+                        <legend>Personal Information</legend>
+                        <b>Address: </b><br>
+                        <input type="text" id="I3" class="AllB"> <br>
+                        <b>Phone Number: </b><br>
+                        <input type="number" id="I9" class="AllB"> <br>
+                        <b>Email Id: </b><br>
+                        <input type="text" id="I4" class="AllB"> <br>
+                        <b>National Id: </b><br>
+                        <input type="text" id="I5" class="AllB"> <br>
+                        <b>Date of Birth: </b><br>
+                        <input type="date" id="I6" class="AllB"> <br>
+                    </fieldset>
+                    <fieldset id="FIS3" class="FF">
+                        <legend>Course Registration</legend>
+                        <b>Departmant Name: </b> <br>
+                        <select id="S1" class="AllB">
+                            <option value="None">Select an option</option>
+                            <option value="CSE">Computer Science and Engineering</option>
+                            <option value="EEE">Electrical and Electronics Engineering</option>
+                            <option value="BBA">Bachelers in Business Administration</option>
+                        </select>
+                        <b>Course Name: </b> <br>
+                        <select id="S2" class="AllB">
+                            <option value="None">Select an option</option>
+                            <option value="MAT1">Math 6</option>
+                            <option value="CS1">Web Technology</option>
+                            <option value="EEE1">Microproccesor</option>
+                        </select>
+                        <b>Available Sections: </b> <br>
+                        <input type="radio" id="R1"> A
+                        <input type="radio" id="R2"> B
+                        <input type="radio" id="R3"> C
+                        <input type="radio" id="R4"> J
+                        <input type="radio" id="R5"> N
+                        <input type="radio" id="R6"> U
+                        <br><b>Student ID: </b> <br>
+                        <input type="text" id="I7" class="AllB">
+                    </fieldset>
+                    <center>
+                        <input id="B3" type="submit">
+                    </center>
+                </form>
+                <div id="MD1">
+                    <fieldset id="FIS4" class="FF">
+                        <legend>Registared Name Information</legend>
+                        <b>Name: </b><br>
+                        <b>UserName: </b><br>
+                    </fieldset>
+                </div>
+                <div id="MD2">
+                    <fieldset id="FIS5" class="FF">
+                        <legend>Registared Personal Information</legend>
+                        <b>Address: </b><br>
+                        <b>Phone Number: </b><br>
+                        <b>Email Id: </b><br>
+                        <b>National Id: </b><br>
+                        <b>Date of Birth: </b><br>
+                    </fieldset>
+                </div>
+                <div id="MD3">
+                    <fieldset id="FIS6" class="FF">
+                        <legend>Registared Course Information</legend>
+                        <b>Student Name:</b><br>
+                        <b>Student ID:</b><br>
+                        <b>Departmant Name:</b><br>
+                        <b>Course Name:</b><br>
+                        <b>Course ID:</b><br>
+                        <b>Selected Section:</b><br>
+                    </fieldset>
+                </div>
+                <div id="MD4">
+                    <fieldset id="FIS7" class="FF">
+                        <legend>Activity Adding Section</legend>
+                        <b>Activity Name:</b><br>
+                        <input type="text" id="I8">
+                        <button id="B2" style="border-radius: 10px; width: 80px;">ADD</button>
+                        <br><b>All Activity:</b><br>
+                        <div id="SMD1"></div>
+                    </fieldset>
+                </div>
+                <div id="MD5">
+                    <center>
+                    <h2>Registration Instructions</h2>
+                    </center>
+                    <ul>
+                        <li>Need to <span style="color: red;">Fill every section</span></li>
+                        <li>Need to Give a valid <span style="color: red;">Email address</span> [arnob@gmail.com]</li>
+                        <li>Need to Give proper <span style="color: red;">Phone Number</span>. Phone Numer will be 11 number digit [017XXXXXXXX]</span></li>
+                        <li>Need to Give valid <span style="color: red;">Address</span></li>
+                        <li>Need to Give valid <span style="color: red;">National ID number</span></li>
+                        <li>Need to Give Proper <span style="color: red;">Date of Birth</span></li>
+                        <li>Need to Fill <span style="color: red;">Course Name</span> carefully</li>
+                        <li>Need to Fill <span style="color: red;">Departmant Name</span> carefully</li>
+                        <li>Need to Fill <span style="color: red;">Course section</span> carefully</li>
+                        <li>Need to Provide a valid <span style="color: red;">student ID</span></li>
+                    </ul>
+                </div>
+                <div id="MD6">
+                    <center>
+                        <h2 style="color: black;">Registration status</h2>
+                    </center>
+                    <div id="SMD2" style="padding: 10px;">
+                        <center>
+                            <span style="color: red">Unregistered</span>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script src="TASK1.js">
+
+        </script>
+        <footer style="border: 1px solid black; border-radius: 10px; background-color: black; margin-top: 15px; padding: 10px; position: relative;">
+            <h3 style="color: white;">Thank you for using this website</h3>
+            <h4 style="color: white;">@Copyright to arnob 2025</h2>
+            <span style="background-color: white; border-radius: 5px; padding: 5px;"><a href="">Email</a></span>
+            <span style="background-color: white; border-radius: 5px; padding: 5px;"><a href="">Facebook</a></span>
+            <span style="background-color: white; border-radius: 5px; padding: 5px;"><a href="">Instagram</a></span>
+            <span style="background-color: white; border-radius: 5px; padding: 5px;"><a href="https://github.com/Arnob-HRes">GitHub</a>
+            <img style="position: absolute; top: 20px; right: 10px" src="WhatsApp Image 2025-11-30 at 22.49.09_d56a45bb.jpg" alt="Arnob">
+        </footer>
+    </body>
+</html>

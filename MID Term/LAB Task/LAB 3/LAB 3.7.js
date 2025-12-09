@@ -1,7 +1,8 @@
 function validateUser() {
   let uid = Number(document.getElementById("uid").value);
-  let pic = document.getElementById("pic");
-  let msg = document.getElementById("msg");
+  let pic = docuentm.getElementById("pic");
+  let msg = docume
+  nt.getElementById("msg");
   msg.style.color = "red";
 
   if (!uid || uid <= 0) {

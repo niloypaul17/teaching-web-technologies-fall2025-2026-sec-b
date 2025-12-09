@@ -1,0 +1,108 @@
+#F1{
+    margin: 0 auto;
+    width: 500px;
+    height: auto;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 0px 10px 10px;
+
+}
+.FF{
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.AllB{
+    width: 450px;
+    border: 0.5px solid black;
+    border-radius: 7px;
+}
+.Foot{
+    color: white;
+}
+#I8{
+    width: 300px;
+    border: 0.5px solid black;
+    border-radius: 7px;
+}
+#MainDIV{
+    position: relative;
+}
+#MD1{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+#MD2{
+    position: absolute;
+    top: 100px;
+    left: 0px;
+}
+#MD3{
+    position: absolute;
+    top: 250px;
+    left: 0px;
+}
+#MD4{
+    position: absolute;
+    top: 420px;
+    left: 0px;
+}
+#MD5{
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 400px;
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    padding: 0px 10px;
+}
+#MD6{
+    background-color: transparent;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    width: 400px;
+    height: auto;
+    position: absolute;
+    top: 400px;
+    right: 20px;
+    padding: 10px 10px;
+}
+#FIS4{
+    background-color: white;
+    border: 2px solid black;
+    width: 400px;
+}
+#FIS5{
+    background-color: white;
+    border: 2px solid black;
+    width: 400px;
+}
+#FIS6{
+    background-color: white;
+    border: 2px solid black;
+    width: 400px;
+}
+#FIS7{
+    background-color: white;
+    border: 2px solid black;
+    width: 400px;
+}
+#B3{
+    width: 150px;
+    border-radius: 10px;
+    background-color: lightblue;
+    color: black;
+}
+#B3:hover{
+    background-color: blue;
+    color: white;
+}
+#SMD2{
+    height: auto;
+    margin-bottom: 10px;
+}
+#SMD1{
+    height: auto;
+    padding: 5px;
+}
