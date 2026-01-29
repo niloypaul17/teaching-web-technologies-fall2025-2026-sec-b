@@ -8,7 +8,7 @@
 
         let data=JSON.stringify(product);
         let xhttp = new XMLHttpRequest();
-        xhttp.open('POST', 'search_model.php', true);
+        xhttp.open('POST', '../Model/search_model.php', true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.send('product='+data);
         xhttp.onreadystatechange = function(){

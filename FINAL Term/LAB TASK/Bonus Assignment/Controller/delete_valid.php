@@ -1,5 +1,5 @@
 <?php
-require_once('delete_model.php');
+require_once('../Model/delete_model.php');
 
 if(isset($_GET["name"])){
     $n=$_GET["name"];

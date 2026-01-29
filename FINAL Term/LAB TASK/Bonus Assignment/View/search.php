@@ -1,6 +1,6 @@
 <?php
-require_once('display_model.php');
-require_once('search_ajax.php');
+require_once('../Model/display_model.php');
+require_once('../Controller/search_ajax.php');
 ?>
 <!DOCTYPE html>
 <html>

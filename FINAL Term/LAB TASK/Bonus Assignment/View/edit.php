@@ -1,5 +1,5 @@
 <?php
-require_once('edit_valid.php');
+require_once('../Controller/edit_valid.php');
 ?>
 <!DOCTYPE html>
 <html>

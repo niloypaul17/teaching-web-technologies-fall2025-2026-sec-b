@@ -1,5 +1,5 @@
 <?php
-require_once('display_model.php');
+require_once('../Model/display_model.php');
 ?>
 <!DOCTYPE html>
 <html>

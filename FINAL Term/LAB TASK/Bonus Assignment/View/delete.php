@@ -1,5 +1,5 @@
 <?php
-require_once('delete_valid.php');
+require_once('../Controller/delete_valid.php');
 ?>
 <!DOCTYPE html>
 <html>

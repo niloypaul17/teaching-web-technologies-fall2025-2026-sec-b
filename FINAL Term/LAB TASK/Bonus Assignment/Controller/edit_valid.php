@@ -1,5 +1,11 @@
 <?php
-require_once('add_product_model.php');
+require_once('../Model/edit_model.php');
+
+if(isset($_GET["name"])){
+    $n=$_GET["name"];
+}
+
+$R=edit($n);
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $name=$_POST["name"];
@@ -8,9 +14,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $profit=$SP-$BP;
     $status=isset($_POST["display"]) ? "Yes" : "No";
 
-    $R=addproduct($name,$BP,$SP,$profit,$status);
+    $R2=update($n,$name,$BP,$SP,$profit,$status);
 
-    if($R){
+    if($R2){
         header("Location: display.php");
         exit;
     }
